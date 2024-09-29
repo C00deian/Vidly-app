@@ -1,0 +1,139 @@
+ [
+    {
+      "id": 1,
+      "name": "Action",
+      "description": "Fast-paced movies with a lot of physical activities, fights, and stunts.",
+      "popularity": 8.5,
+      "typicalDuration": "90-150 minutes",
+      "exampleMovies": ["Mad Max: Fury Road", "John Wick", "Die Hard"]
+    },
+    {
+      "id": 2,
+      "name": "Drama",
+      "description": "Movies that focus on emotional development and interaction between characters.",
+      "popularity": 7.9,
+      "typicalDuration": "100-180 minutes",
+      "exampleMovies": ["The Shawshank Redemption", "Forrest Gump", "A Beautiful Mind"]
+    },
+    {
+      "id": 3,
+      "name": "Comedy",
+      "description": "Light-hearted movies intended to make the audience laugh.",
+      "popularity": 8.2,
+      "typicalDuration": "80-120 minutes",
+      "exampleMovies": ["Superbad", "The Hangover", "Step Brothers"]
+    },
+    {
+      "id": 4,
+      "name": "Horror",
+      "description": "Movies designed to frighten and create an atmosphere of fear and dread.",
+      "popularity": 7.3,
+      "typicalDuration": "80-120 minutes",
+      "exampleMovies": ["The Conjuring", "Hereditary", "A Nightmare on Elm Street"]
+    },
+    {
+      "id": 5,
+      "name": "Science Fiction",
+      "description": "Movies that explore futuristic concepts, advanced technology, and the unknown.",
+      "popularity": 8.1,
+      "typicalDuration": "90-150 minutes",
+      "exampleMovies": ["Inception", "The Matrix", "Interstellar"]
+    },
+    {
+      "id": 6,
+      "name": "Romance",
+      "description": "Movies focused on love stories and emotional connections between characters.",
+      "popularity": 7.5,
+      "typicalDuration": "90-120 minutes",
+      "exampleMovies": ["The Notebook", "Pride and Prejudice", "La La Land"]
+    },
+    {
+      "id": 7,
+      "name": "Thriller",
+      "description": "Movies that create excitement and suspense, often with plot twists.",
+      "popularity": 8.0,
+      "typicalDuration": "90-140 minutes",
+      "exampleMovies": ["Se7en", "Gone Girl", "Shutter Island"]
+    },
+    {
+      "id": 8,
+      "name": "Documentary",
+      "description": "Non-fiction movies that aim to document reality, often for educational or historical purposes.",
+      "popularity": 7.8,
+      "typicalDuration": "60-120 minutes",
+      "exampleMovies": ["13th", "The Social Dilemma", "Won't You Be My Neighbor?"]
+    },
+    {
+      "id": 9,
+      "name": "Fantasy",
+      "description": "Movies set in imaginary universes with magical or supernatural elements.",
+      "popularity": 8.3,
+      "typicalDuration": "100-180 minutes",
+      "exampleMovies": ["The Lord of the Rings", "Harry Potter", "The Chronicles of Narnia"]
+    },
+    {
+      "id": 10,
+      "name": "Adventure",
+      "description": "Movies that emphasize exploration, journeys, and challenges, often in exotic settings.",
+      "popularity": 8.6,
+      "typicalDuration": "90-150 minutes",
+      "exampleMovies": ["Indiana Jones", "Jurassic Park", "Pirates of the Caribbean"]
+    },
+    {
+      "id": 11,
+      "name": "Animation",
+      "description": "Movies created using drawings, models, or computer graphics.",
+      "popularity": 8.4,
+      "typicalDuration": "70-120 minutes",
+      "exampleMovies": ["Toy Story", "The Lion King", "Spirited Away"]
+    },
+    {
+      "id": 12,
+      "name": "Mystery",
+      "description": "Movies that focus on solving a puzzle or crime, with plenty of twists and turns.",
+      "popularity": 7.7,
+      "typicalDuration": "90-130 minutes",
+      "exampleMovies": ["Knives Out", "The Girl with the Dragon Tattoo", "Sherlock Holmes"]
+    },
+    {
+      "id": 13,
+      "name": "Musical",
+      "description": "Movies where the story is told through songs and dance numbers.",
+      "popularity": 7.4,
+      "typicalDuration": "90-130 minutes",
+      "exampleMovies": ["The Sound of Music", "La La Land", "Moulin Rouge!"]
+    },
+    {
+      "id": 14,
+      "name": "Crime",
+      "description": "Movies that revolve around criminal activities, law enforcement, and justice.",
+      "popularity": 8.0,
+      "typicalDuration": "100-140 minutes",
+      "exampleMovies": ["The Godfather", "Pulp Fiction", "Goodfellas"]
+    },
+    {
+      "id": 15,
+      "name": "War",
+      "description": "Movies depicting battles and the effects of war on soldiers and civilians.",
+      "popularity": 7.6,
+      "typicalDuration": "90-180 minutes",
+      "exampleMovies": ["Saving Private Ryan", "Dunkirk", "1917"]
+    },
+    {
+      "id": 16,
+      "name": "Western",
+      "description": "Movies set in the American West, often focusing on cowboys, outlaws, and frontier life.",
+      "popularity": 7.1,
+      "typicalDuration": "90-150 minutes",
+      "exampleMovies": ["The Good, the Bad and the Ugly", "Unforgiven", "Django Unchained"]
+    },
+    {
+      "id": 17,
+      "name": "Biography",
+      "description": "Movies based on the real lives of individuals or historical figures.",
+      "popularity": 7.9,
+      "typicalDuration": "90-150 minutes",
+      "exampleMovies": ["The Theory of Everything", "Bohemian Rhapsody", "Schindler's List"]
+    }
+  ]
+  
