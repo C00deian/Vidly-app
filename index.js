@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const genres = require("./genres.json");
-const Joi = require('joi');
+const validateGenre = require("./validation");
 
 app.use(express.json());
 
@@ -16,7 +16,6 @@ app.get("/api/genres", (req, res) => {
 
 // get a single genre
 app.get("/api/genres/:id", (req, res) => {
-    
   const genre = genres.find((g) => g.id === parseInt(req.params.id));
   if (!genre)
     return res.status(404).send("Genres with the given ID was not found");
@@ -26,8 +25,8 @@ app.get("/api/genres/:id", (req, res) => {
 
 // create genre
 app.post("/api/genres", (req, res) => {
-    const { error } = validateGenre(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
+  const { error } = validateGenre(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
 
   const genre = {
     id: genres.length + 1,
@@ -38,42 +37,31 @@ app.post("/api/genres", (req, res) => {
   res.send(genre);
 });
 
-
 // update a genre
-app.put('/api/genres/:id', (req, res) => {
-   
-    const genre = genres.find((g) => g.id === parseInt(req.params.id));
-    if (!genre)
-        return res.status(404).send("Genres with the given ID was not found");
-    // validate
-    const { error } = validateGenre(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
-    // update genre 
-    genre.name = req.body.name;
-    res.send(genre);
-})
+app.put("/api/genres/:id", (req, res) => {
+  const genre = genres.find((g) => g.id === parseInt(req.params.id));
+  if (!genre)
+    return res.status(404).send("Genres with the given ID was not found");
 
-app.delete('/api/genres/:id', (req, res) => {
-    const genre = genres.find((g) => g.id === parseInt(req.params.id));
+  const { error } = validateGenre(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
 
-    if (!genre) return res.status(404).send("Genres with the given ID was not found");
-
-    const index = genres.indexOf(genre);
-    genres.splice(index, 1);
-    res.send(genre);
-
-})
+  genre.name = req.body.name;
+  res.send(genre);
+});
 
 
-function validateGenre(genre) {
+// delete Genre 
+app.delete("/api/genres/:id", (req, res) => {
+  const genre = genres.find((g) => g.id === parseInt(req.params.id));
 
-        const schema = Joi.object({
-          name: Joi.string().min(3).required(),
-        });
-      
-        return schema.validate(genre);
-      }
+  if (!genre)
+    return res.status(404).send("Genres with the given ID was not found");
 
+  const index = genres.indexOf(genre);
+  genres.splice(index, 1);
+  res.send(genre);
+});
 
 const port = process.env.PORT || 3030;
 app.listen(port, () => {
