@@ -4,6 +4,13 @@ const bcrypt = require("bcrypt");
 
 const { validateUser } = require("../validation");
 
+
+
+const getCurrentUser = async(req,res) => {
+  const user = await User.findById(req.user._id).select('-password');
+  res.send(user); 
+}
+
 const registerUser = async (req, res) => {
   const { error } = validateUser(req.body, "registration");
   if (error) return res.status(400).send(error.details[0].message);
@@ -47,4 +54,5 @@ const login = async (req, res) => {
 module.exports = {
   registerUser,
   login,
+  getCurrentUser
 };
