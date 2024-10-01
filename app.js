@@ -1,3 +1,4 @@
+require("dotenv").config();
 require("./db/config");
 const express = require("express");
 const genresRoute = require("./routes/genres");
@@ -14,5 +15,5 @@ app.use("/api/users", usersRoute);
 const port = process.env.PORT || 3030;
 
 app.listen(port, () => {
-  console.log("Vidly App listning on Port:", port);
+  console.log(`Vidly app listning on Port: ${port}`);
 });

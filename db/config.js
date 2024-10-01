@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 async function dbConnection() {
   await mongoose
-    .connect("mongodb://localhost/vidly-app")
+    .connect(process.env.MONGO_URI)
     .then(() => {
       console.log("Vidly database connected succesfully");
     })
