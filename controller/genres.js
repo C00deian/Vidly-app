@@ -1,7 +1,9 @@
 const Course = require("../model/genres");
-const validateGenre = require("../validation");
+const { validateGenre } = require("../validation");
 
-// get all Genres
+
+
+// get all Genres 
 async function getGenres(req, res) {
   const genres = await Course.find();
   if (genres.length === 0) return res.status(404).json("No Record found");
@@ -82,3 +84,4 @@ module.exports = {
   updateGenre,
   deleteGenre,
 };
+

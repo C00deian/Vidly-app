@@ -1,4 +1,5 @@
 const express = require("express");
+const Authentication = require("../middleware/Authentication");
 const {
   getGenres,
   getGenre,
@@ -7,12 +8,16 @@ const {
   deleteGenre,
 } = require("../controller/genres");
 
+
 const router = express.Router();
 
-router.get("/", getGenres);
+router.get("/",  getGenres);
 router.get("/:id", getGenre);
-router.post("/", createGenre);
+router.post("/", Authentication, createGenre);
 router.put("/:id", updateGenre);
 router.delete("/:id", deleteGenre);
+
+
+
 
 module.exports = router;
