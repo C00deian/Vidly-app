@@ -4,6 +4,7 @@ module.exports = function asyncHandler(handler) {
     try {
       await handler(req, res);
     } catch (error) {
+        console.log('Something failed' , error.message)
       next();
     }
   };
