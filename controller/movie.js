@@ -1,6 +1,5 @@
 const { Movie, validate } = require("../model/movie");
-const moment = require("moment");
-const Genre = require("../model/genres");
+const {Genre }= require("../model/genres");
 
 const movies = async (req, res) => {
   const movies = await Movie.find().select("-__v").sort("name");
@@ -31,7 +30,6 @@ const addMovie = async (req, res) => {
       },
       numberInStock: req.body.numberInStock,
       dailyRentalRate: req.body.dailyRentalRate,
-      publishDate: moment.toJSON(),
     });
 
     res.status(201).send(movie);

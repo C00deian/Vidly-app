@@ -12,9 +12,9 @@ const {
 const router = express.Router();
 
 router.get("/", movies);
-router.get("/:id", [auth], getMovie);
+router.get("/:id", validateObjectId, getMovie);
 router.put("/:id", [auth], updateMovie);
-router.post("/addMovie", validateObjectId, addMovie);
+router.post("/add-movie", [auth], addMovie);
 router.delete("/:id", [auth, admin], deleteMovie);
 
 module.exports = router;

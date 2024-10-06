@@ -1,6 +1,7 @@
 const Joi = require("joi");
 const mongoose = require("mongoose");
-const  genreSchema  = require("./genres");
+const moment = require('moment');
+const  {genreSchema}  = require("./genres");
 
 const Movie = mongoose.model(
   "Movie",
@@ -28,6 +29,11 @@ const Movie = mongoose.model(
       min: 0,
       max: 255,
     },
+
+    publishDate: {
+      type: String,
+      default: () => moment().format('MM/DD/YYYY h:mm a')
+    },
   })
 );
 
@@ -35,7 +41,7 @@ const Movie = mongoose.model(
 function validateMovie(movie) {
   const schema = Joi.object({
     title: Joi.string().min(5).max(50).required(),
-    // genreId: Joi.objectId().required(),
+    genreId: Joi.string().hex().length(24),
     numberInStock: Joi.number().min(0).required(),
     dailyRentalRate: Joi.number().min(0).required(),
   });

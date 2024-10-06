@@ -1,6 +1,6 @@
 const asyncHandler = require("../middleware/asyncHandler");
-const Genre = require('../model/genres');
-const validateGenre = require('../model/genres')
+const { validate,Genre } = require("../model/genres");
+
 
 
 // get all Genres
@@ -22,7 +22,7 @@ const getGenre = asyncHandler(async (req, res) => {
 
 //   create a new Genre
 const createGenre = asyncHandler(async (req, res) => {
-  const { error } = validateGenre(req.body);
+  const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   const existingGenre = await Genre.findOne({ name: req.body.name });
@@ -42,10 +42,10 @@ const createGenre = asyncHandler(async (req, res) => {
 
 // update Genre
 const updateGenre = asyncHandler(async (req, res) => {
-  const { error } = validateGenre(req.body);
+  const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  // const { error } = validateGenre(req.body);
+  // const { error } = validate(req.body);
   // if (error) return res.status(400).send(error.details[0].message);
 
   const genre = await Genre.findByIdAndUpdate(
