@@ -13,5 +13,5 @@ module.exports = function (app) {
   app.use("/api/customers", customerRoute);
   app.use("/api/movies", movieRoute);
   app.use("/api/rentals", rentalRoute);
-  
+
 };
