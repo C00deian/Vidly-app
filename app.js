@@ -8,6 +8,7 @@ const app = express();
 // middleware
 require("./startup/routes")(app);
 // require('./startup/logging')(app);
+require('./startup/cors')(app);
 
 app.use(error);
 
