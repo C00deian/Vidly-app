@@ -1,10 +1,11 @@
 const asyncHandler = require("../middleware/asyncHandler");
-const Course = require("../model/genres");
-// const { validateGenre } = require("../validation");
+const Genre = require('../model/genres');
+const validateGenre = require('../model/genres')
+
 
 // get all Genres
 const getGenres = asyncHandler(async (req, res) => {
-  const genres = await Course.find();
+  const genres = await Genre.find().select('-__v').sort("name");
   if (genres.length === 0) return res.status(404).json("No Record found");
   res.status(200).send(genres);
 });
@@ -12,7 +13,7 @@ const getGenres = asyncHandler(async (req, res) => {
 
 // get a single Genre
 const getGenre = asyncHandler(async (req, res) => {
-  const genre = await Course.findById(req.params.id);
+  const genre = await Genre.findById(req.params.id).select("-__v");
   if (!genre)
     return res.status(404).send("Genre with the given ID is not found");
   res.status(200).send(genre);
@@ -24,17 +25,13 @@ const createGenre = asyncHandler(async (req, res) => {
   const { error } = validateGenre(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const existingGenre = await Course.findOne({ name: req.body.name });
+  const existingGenre = await Genre.findOne({ name: req.body.name });
   if (existingGenre)
     return res.status(400).send("Genre with this name already exists.");
 
   try {
-    const genre = await Course.create({
+    const genre = await Genre.create({
       name: req.body.name,
-      description: req.body.description,
-      popularity: req.body.popularity,
-      typicalDuration: req.body.typicalDuration,
-      exampleMovies: req.body.exampleMovies,
     });
 
     res.status(201).send(genre); // Respond with the newly created document
@@ -45,19 +42,17 @@ const createGenre = asyncHandler(async (req, res) => {
 
 // update Genre
 const updateGenre = asyncHandler(async (req, res) => {
-  const { name, popularity } = req.body;
+  const { error } = validateGenre(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
 
-  if (!name || !popularity)
-    return res.status(400).send("Field should not be blank");
   // const { error } = validateGenre(req.body);
   // if (error) return res.status(400).send(error.details[0].message);
 
-  const genre = await Course.findByIdAndUpdate(
+  const genre = await Genre.findByIdAndUpdate(
     req.params.id,
     {
       $set: {
         name: req.body.name,
-        popularity: req.body.popularity,
       },
     },
     { new: true }
@@ -71,7 +66,7 @@ const updateGenre = asyncHandler(async (req, res) => {
 
 //   delete a Genre
 const deleteGenre = asyncHandler(async (req, res) => {
-  const genre = await Course.findByIdAndDelete(req.params.id);
+  const genre = await Genre.findByIdAndDelete(req.params.id);
   if (!genre)
     return res.status(404).send("Genre with the given ID is not found");
 
