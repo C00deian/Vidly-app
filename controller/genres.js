@@ -1,6 +1,6 @@
 const asyncHandler = require("../middleware/asyncHandler");
 const Course = require("../model/genres");
-const { validateGenre } = require("../validation");
+// const { validateGenre } = require("../validation");
 
 // get all Genres
 const getGenres = asyncHandler(async (req, res) => {

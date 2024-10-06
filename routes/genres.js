@@ -19,5 +19,4 @@ router.put("/:id", updateGenre);
 router.delete("/:id",[Authentication , admin] , deleteGenre);
 
 
-
 module.exports = router;

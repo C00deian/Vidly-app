@@ -2,7 +2,6 @@ const { User } = require("../model/users");
 const _ = require("lodash");
 const bcrypt = require("bcrypt");
 
-const { validateUser } = require("../validation");
 
 
 
