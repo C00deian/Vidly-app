@@ -1,5 +1,5 @@
 const { Movie, validate } = require("../model/movie");
-const {Genre }= require("../model/genres");
+const { Genre } = require("../model/genres");
 
 const movies = async (req, res) => {
   const movies = await Movie.find().select("-__v").sort("name");
@@ -19,7 +19,7 @@ const addMovie = async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   try {
-    const genre = await Genre.findById(req.body.genreId);
+    const genre = await Genre.findById(req.body.genreId); 
     if (!genre) return res.status(400).send("Invalid genre.");
 
     const movie = await Movie.create({
@@ -39,6 +39,7 @@ const addMovie = async (req, res) => {
 };
 
 const updateMovie = async (req, res) => {
+  const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   const genre = await Genre.findById(req.body.genreId);
