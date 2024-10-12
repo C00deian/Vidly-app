@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken')
+const Joi = require('joi');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -71,7 +72,7 @@ function validateUser(req, type) {
     });
   }
 
-  return schema.validate(req);
+  return schema.validate(req , type);
 }
 
 exports.User = User;

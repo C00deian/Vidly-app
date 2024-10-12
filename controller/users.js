@@ -1,4 +1,4 @@
-const { User } = require("../model/users");
+const { User, validate } = require("../model/users");
 const _ = require("lodash");
 const bcrypt = require("bcrypt");
 
@@ -11,7 +11,7 @@ const getCurrentUser = async(req,res) => {
 }
 
 const registerUser = async (req, res) => {
-  const { error } = validateUser(req.body, "registration");
+  const { error } = validate(req.body, "registration");
   if (error) return res.status(400).send(error.details[0].message);
 
   try {
@@ -27,6 +27,8 @@ const registerUser = async (req, res) => {
 
     res
       .header("x-auth-token", token)
+      // to read a custom header in a browser.
+      .header('access-control-expose-headers', "x-auth-token")
       .status(201)
       .send(_.pick(user, ["name", "email", "_id"]));
   } catch (error) {
